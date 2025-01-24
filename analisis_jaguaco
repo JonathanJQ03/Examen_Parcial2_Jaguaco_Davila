@@ -53,3 +53,22 @@
 - **Mensajes de consola:** Mantener una consola visual ayuda a mejorar la experiencia del usuario, proporcionando retroalimentación directa sobre las acciones realizadas en la biblioteca.
 
 El código está diseñado para gestionar de forma interactiva y eficiente una "Biblioteca Digital", permitiendo a los usuarios ejecutar comandos para gestionar libros de manera intuitiva. Cada parte del código tiene un propósito claro para hacer la experiencia de usuario fluida y sin errores.
+PARTE DAVILA CODIGO: LIBRO.JS
+- **Clase `Libro`:**
+  - **Propósito:** Esta clase representa a un libro dentro de la biblioteca. Cada instancia de la clase tiene propiedades específicas que describen el libro.
+  
+- **Constructor (`constructor(titulo, autor, genero)`):**
+  - El constructor es llamado cuando se crea una nueva instancia de la clase `Libro` y recibe tres parámetros:
+    - **`titulo`:** El título del libro.
+    - **`autor`:** El autor del libro.
+    - **`genero`:** El género del libro.
+  - **Propiedades del libro:**
+    - **`this.titulo`:** Se asigna el valor del título recibido como argumento.
+    - **`this.autor`:** Se asigna el valor del autor recibido.
+    - **`this.genero`:** Se asigna el valor del género recibido.
+    - **`this.disponible`:** Inicializa la propiedad `disponible` como `true`, lo que significa que el libro está disponible para ser prestado cuando se crea. Este valor puede cambiar si el libro se presta o se devuelve.
+
+**¿Por qué usamos cada cosa?**
+- **Propiedades:** Se almacenan los atributos `titulo`, `autor`, `genero` y `disponible` para cada libro, permitiendo acceder y modificar estos valores de manera eficiente dentro de la biblioteca.
+- **`this.disponible`:** Inicializar esta propiedad con `true` es útil porque al crear un libro, se asume que está disponible para ser prestado. Esta propiedad se actualizará posteriormente a medida que el libro sea prestado o devuelto.
+- **`constructor`:** El uso de un constructor facilita la creación de instancias de la clase `Libro` con los parámetros que representan sus características, permitiendo tener múltiples objetos de tipo `Libro` con diferentes valo
