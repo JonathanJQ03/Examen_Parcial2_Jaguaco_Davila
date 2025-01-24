@@ -1,17 +1,33 @@
 #Analisis CSS
-body: establecimos la fuente y el ancho del cuerpo a 900px, con el contenido centrado y un fondo gris claro.
+    body: establecimos la fuente y el ancho del cuerpo a 900px, con el contenido centrado y un fondo gris claro.
+    
+    #consola, #github-info: aplicamos un fondo blanco con borde gris claro y esquinas redondeadas
+    #notificaciones: Fijamos la posición en la esquina superior derecha con un ancho de 300px y una altura máxima de 400px con desplazamiento vertical.
+    
+    .notificacion: para establecer un fondo gris claro, borde gris, esquinas redondeadas, padding de 10px, margen inferior de 10px, sombra sutil y utiliza Flexbox para alinear contenido.
+    
+    .notificacion.exito: Con Borde izquierdo verde para notificaciones de éxito.
+    
+    .notificacion.alerta: con borde izquierdo naranja para alertas.
+    
+    .notificacion.error: con borde izquierdo rojo para errores.
+    
+    .notificacion .close: establecimos el cursor como puntero y color gris para el botón de cierre.
+    
+    #github-info pre: Definimos un fondo gris claro, padding y esquinas redondeadas para el texto preformateado.
 
-#consola, #github-info: aplicamos un fondo blanco con borde gris claro y esquinas redondeadas
-#notificaciones: Fijamos la posición en la esquina superior derecha con un ancho de 300px y una altura máxima de 400px con desplazamiento vertical.
+#Analisis Biblioteca
 
-.notificacion: para establecer un fondo gris claro, borde gris, esquinas redondeadas, padding de 10px, margen inferior de 10px, sombra sutil y utiliza Flexbox para alinear contenido.
-
-.notificacion.exito: Con Borde izquierdo verde para notificaciones de éxito.
-
-.notificacion.alerta: con borde izquierdo naranja para alertas.
-
-.notificacion.error: con borde izquierdo rojo para errores.
-
-.notificacion .close: establecimos el cursor como puntero y color gris para el botón de cierre.
-
-#github-info pre: Definimos un fondo gris claro, padding y esquinas redondeadas para el texto preformateado.
+    class Biblioteca: Esta clase gestiona una colección de libros y un sistema de notificaciones.
+  
+    constructor(): Inicializa la biblioteca con un array de libros predefinidos y una instancia de SistemaNotificaciones.
+    
+    listarLibros(): Sirve para devolver una lista de libros en formato de texto, indica si cada libro está disponible o prestado, tambien utiliza map para transformar los libros en cadenas y join para unirlas en una sola cadena.
+    
+    agregarLibro(titulo, autor, genero): Crea un nuevo libro y lo añade a la colección,luego de la creacion muestra una notificación de éxito y devuelve un mensaje confirmando la adición.
+    
+    prestarLibro(titulo): Busca el libro segun el título, si está disponible lo pone prestado y muestra una notificación de éxito devuelviendo un mensaje de confirmación, pero si no está disponible da mensaje de error.
+    
+    devolverLibro(titulo):Tambien  Busca el libro segun el título, si está prestado lo pone como disponible, muestra una notificación de éxito y devuelve un mensaje de confirmación. Si no está prestado, devuelve un mensaje indicando que no se puede devolver.
+    
+    buscarLibro(termino): Filtra los libros que coinciden con el término de búsqueda en el título, autor o género. Devuelve una lista de coincidencias en formato de texto.
