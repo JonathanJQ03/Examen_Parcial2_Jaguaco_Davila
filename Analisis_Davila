@@ -1,0 +1,17 @@
+#Analisis CSS
+body: establecimos la fuente y el ancho del cuerpo a 900px, con el contenido centrado y un fondo gris claro.
+
+#consola, #github-info: aplicamos un fondo blanco con borde gris claro y esquinas redondeadas
+#notificaciones: Fijamos la posición en la esquina superior derecha con un ancho de 300px y una altura máxima de 400px con desplazamiento vertical.
+
+.notificacion: para establecer un fondo gris claro, borde gris, esquinas redondeadas, padding de 10px, margen inferior de 10px, sombra sutil y utiliza Flexbox para alinear contenido.
+
+.notificacion.exito: Con Borde izquierdo verde para notificaciones de éxito.
+
+.notificacion.alerta: con borde izquierdo naranja para alertas.
+
+.notificacion.error: con borde izquierdo rojo para errores.
+
+.notificacion .close: establecimos el cursor como puntero y color gris para el botón de cierre.
+
+#github-info pre: Definimos un fondo gris claro, padding y esquinas redondeadas para el texto preformateado.
