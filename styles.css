@@ -35,3 +35,28 @@ body {
     align-items: center;
     justify-content: space-between;
 }
+
+.notificacion.exito {
+    border-left: 5px solid green;
+}
+
+.notificacion.alerta {
+    border-left: 5px solid orange;
+}
+
+.notificacion.error {
+    border-left: 5px solid red;
+}
+
+.notificacion .close {
+    cursor: pointer;
+    color: #888;
+    font-weight: bold;
+}
+
+#github-info pre {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    white-space: pre-wrap;
+}
