@@ -1,0 +1,55 @@
+## Analisis del HTML:
+- Estructura general: Página HTML5 con soporte UTF-8 (`<!DOCTYPE html>` y `<meta charset="UTF-8">`).
+- Título: "Biblioteca Digital" (`<title>` y `<h1>`).
+- Consola: `<div id="consola">` para mostrar resultados.
+- Entrada y botón:
+  - `<input>` para comandos del usuario.
+  - `<button onclick="ejecutarComando()">` para ejecutar acciones.
+- Archivos externos:
+  - `styles.css`: Estilo.
+  - `notifications.js`, `libro.js`, `biblioteca.js`, `script.js`: Scripts para funcionalidades.
+##Analisis del Script:
+
+- **Clase `Biblioteca`:**
+  - Se crea una instancia de la clase `Biblioteca` con `new Biblioteca()`, que se encargará de gestionar la lógica de la biblioteca (como listar, agregar, prestar, devolver y buscar libros).
+  - Cada una de estas funcionalidades está encapsulada en métodos dentro de la clase `Biblioteca`, lo que permite modularizar el código y hacer que cada acción se gestione de forma independiente.
+
+- **Función `ejecutarComando()`:**
+  - **Propósito:** Esta función toma el comando que el usuario ingresa, lo interpreta y ejecuta la acción correspondiente.
+  - **Cómo lo hace:**
+    - **Obtener el comando:** Captura el valor del campo de texto de entrada (`#inputComando`), eliminando espacios innecesarios y convirtiéndolo a minúsculas para facilitar la comparación (`comando.trim().toLowerCase()`).
+    - **Estructura de decisiones (if-else):** Dependiendo del comando ingresado, se llama a la función correspondiente de la clase `Biblioteca`:
+      - **`listar`:** Llama a `biblioteca.listarLibros()`, que debería devolver todos los libros disponibles.
+      - **`agregar [titulo] [autor] [genero]`:** Divide el comando en tres partes (título, autor y género) y pasa estos valores a `biblioteca.agregarLibro(titulo, autor, genero)` para agregar un nuevo libro.
+      - **`prestar [titulo]`:** Extrae el título del libro (subcadena desde el octavo carácter) y lo pasa a `biblioteca.prestarLibro(titulo)` para marcar el libro como prestado.
+      - **`devolver [titulo]`:** Similar al comando anterior, extrae el título y lo pasa a `biblioteca.devolverLibro(titulo)` para marcar el libro como devuelto.
+      - **`buscar [termino]`:** Extrae el término de búsqueda y lo pasa a `biblioteca.buscarLibro(termino)` para buscar libros que coincidan con dicho término.
+      - **`ayuda`:** Si el usuario escribe "ayuda", devuelve un texto con los comandos disponibles para guiar al usuario.
+    - Si el comando no es reconocido, devuelve un mensaje de error.
+    - Al final de cada comando, limpia el campo de entrada (`entrada.value = ''`), preparándolo para el siguiente comando.
+
+- **Función `mostrarEnConsola(mensaje, esError = false)`:**
+  - **Propósito:** Mostrar los resultados o mensajes en la consola de la página.
+  - **Cómo lo hace:**
+    - Crea un nuevo `<div>` con el mensaje que se pasa a la función.
+    - Si el mensaje es un error (el parámetro `esError` es `true`), agrega una clase CSS `error` para que se muestre de una forma diferente (por ejemplo, con un color de texto rojo).
+    - El mensaje se agrega al final del contenedor de consola (`#consola`).
+    - Después de agregar el mensaje, asegura que la consola haga scroll automáticamente hacia el final (`consola.scrollTop = consola.scrollHeight`), lo que permite ver siempre el mensaje más reciente.
+
+- **Soporte de teclado (`keypress`):**
+  - **Propósito:** Permitir que el usuario ejecute un comando presionando "Enter", en lugar de hacer clic en el botón "Ejecutar".
+  - **Cómo lo hace:** Se agrega un `eventListener` al campo de texto (`#inputComando`) que escucha el evento `keypress`. Si la tecla presionada es "Enter" (`e.key === 'Enter'`), se llama a la función `ejecutarComando()`.
+
+- **Mensajes iniciales:**
+  - Al cargar la página, se muestran mensajes de bienvenida y de ayuda para guiar al usuario sobre cómo interactuar con la "Biblioteca Digital".
+  - **`mostrarEnConsola('Bienvenido a la Biblioteca Digital');`**: Muestra un mensaje de bienvenida en la consola de la página.
+  - **`mostrarEnConsola('Escribe "ayuda" para ver los comandos disponibles');`**: Informa al usuario sobre el comando "ayuda" para obtener una lista de comandos.
+
+**¿Por qué usamos cada cosa?**
+- **`try-catch`:** Es una práctica recomendada para manejar errores en JavaScript. Si hay un problema (por ejemplo, el comando no tiene la sintaxis correcta o hay un fallo en el método de la biblioteca), el código no fallará completamente, sino que se manejará el error de manera controlada.
+- **`trim().toLowerCase()`:** Esto asegura que los comandos se procesen correctamente sin importar los espacios adicionales al principio o final del texto, y sin importar si el usuario usa mayúsculas o minúsculas.
+- **`addEventListener`:** Este método permite hacer la página más interactiva. En lugar de depender de un botón para ejecutar el comando, el evento `keypress` mejora la experiencia del usuario al permitir ejecutar el comando solo con presionar "Enter".
+- **Manipulación del DOM (Document Object Model):** Usar `document.createElement` y agregar elementos al DOM dinámicamente permite que los mensajes y resultados se muestren en tiempo real sin necesidad de recargar la página.
+- **Mensajes de consola:** Mantener una consola visual ayuda a mejorar la experiencia del usuario, proporcionando retroalimentación directa sobre las acciones realizadas en la biblioteca.
+
+El código está diseñado para gestionar de forma interactiva y eficiente una "Biblioteca Digital", permitiendo a los usuarios ejecutar comandos para gestionar libros de manera intuitiva. Cada parte del código tiene un propósito claro para hacer la experiencia de usuario fluida y sin errores.
